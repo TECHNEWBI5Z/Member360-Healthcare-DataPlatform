@@ -1,0 +1,78 @@
+table fact_condition
+	lineageTag: 9d253052-65d9-491b-b435-e4d6cef15272
+	sourceLineageTag: [dbo].[fact_condition]
+
+	column ConditionID
+		dataType: string
+		isHidden
+		lineageTag: 96761098-e0d4-4183-8fe4-90106e27b0ff
+		sourceLineageTag: ConditionID
+		summarizeBy: none
+		sourceColumn: ConditionID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientID
+		dataType: string
+		isHidden
+		lineageTag: 6a84e7f1-3a43-45eb-acf6-0d90716f913e
+		sourceLineageTag: PatientID
+		summarizeBy: none
+		sourceColumn: PatientID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Diagnosis
+		dataType: string
+		lineageTag: 5714deeb-f020-4558-ba95-d24cf47933a7
+		sourceLineageTag: Diagnosis
+		summarizeBy: none
+		sourceColumn: Diagnosis
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 70852832-ee98-431c-b0fe-32ab44850a27
+		sourceLineageTag: Status
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d5e27d1e-eee6-4d75-811d-0ed50ec930d4
+		sourceLineageTag: PatientKey
+		summarizeBy: count
+		sourceColumn: PatientKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column conditionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: eaec1ddb-7792-4ca8-89a3-0bfa1e815b16
+		sourceLineageTag: conditionKey
+		summarizeBy: count
+		sourceColumn: conditionKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_condition = entity
+		mode: directLake
+		source
+			entityName: fact_condition
+			expressionSource: 'DirectLake - HealthcareLakehouse'
+

@@ -1,0 +1,119 @@
+table dim_patient
+	lineageTag: 3794cf05-e2c8-4525-a8b0-0ffbffbab15d
+	sourceLineageTag: [dbo].[dim_patient]
+
+	column PatientID
+		dataType: string
+		isHidden
+		lineageTag: 6fda7989-4771-4223-9927-6c64426e80c4
+		sourceLineageTag: PatientID
+		summarizeBy: none
+		sourceColumn: PatientID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRN
+		dataType: string
+		isHidden
+		lineageTag: fb688fff-a486-4098-8eed-8fb71c211f03
+		sourceLineageTag: MRN
+		summarizeBy: none
+		sourceColumn: MRN
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: a180cfff-b064-49f7-b945-377226a46607
+		sourceLineageTag: FirstName
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: 94ccfe33-0584-49ee-bc71-be1a6b40260d
+		sourceLineageTag: LastName
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: 01cbe675-2947-4243-b5cc-e5471410f4f3
+		sourceLineageTag: gender
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column birthDate
+		dataType: string
+		lineageTag: 39da3e5e-ac1e-436f-83e8-78eea7344dd4
+		sourceLineageTag: birthDate
+		summarizeBy: none
+		sourceColumn: birthDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 3c0f9e4d-98a5-498d-9b52-e8df5c7d8703
+		sourceLineageTag: City
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 3566a6f6-b0c7-442b-8593-01b377973f62
+		sourceLineageTag: State
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: aa2b9e49-b53f-4ff9-84a0-f82549aef464
+		sourceLineageTag: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Phone
+		dataType: string
+		lineageTag: ff0258aa-aa33-47ea-b8af-dba176068858
+		sourceLineageTag: Phone
+		summarizeBy: none
+		sourceColumn: Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column patientKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fc2a2e26-9ca6-4fdf-9720-2c5c396492ef
+		sourceLineageTag: patientKey
+		summarizeBy: count
+		sourceColumn: patientKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_patient = entity
+		mode: directLake
+		source
+			entityName: dim_patient
+			expressionSource: 'DirectLake - HealthcareLakehouse'
+

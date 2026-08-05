@@ -1,0 +1,53 @@
+table dim_provider
+	lineageTag: da9829fe-4608-476a-8c47-5f4090443cb5
+	sourceLineageTag: [dbo].[dim_provider]
+
+	column PractitionerID
+		dataType: string
+		isHidden
+		lineageTag: c5641223-0d8a-48f4-b9c4-a2da9d381ce8
+		sourceLineageTag: PractitionerID
+		summarizeBy: none
+		sourceColumn: PractitionerID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: a2ee30a6-bae3-4c81-89e2-0e466668e827
+		sourceLineageTag: FirstName
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: 4d1c446e-fadb-4b3e-b3a0-70fa871cc844
+		sourceLineageTag: LastName
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column providerKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6250c517-0d8a-489f-a83f-addb1ea21a46
+		sourceLineageTag: providerKey
+		summarizeBy: count
+		sourceColumn: providerKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_provider = entity
+		mode: directLake
+		source
+			entityName: dim_provider
+			expressionSource: 'DirectLake - HealthcareLakehouse'
+

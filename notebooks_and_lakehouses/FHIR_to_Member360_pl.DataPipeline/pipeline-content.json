@@ -1,0 +1,95 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "9ab500a1-ed44-b475-43bf-7ee42d8a86d4",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 3,
+          "retryIntervalInSeconds": 60,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Bronze_injestion",
+        "description": "Ingest raw FHIR resources from the source into the Bronze Lakehouse while preserving the original data for auditing and replay.",
+        "dependsOn": []
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "5f128aef-27b4-b3cd-410d-9fbd90079c9b",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 3,
+          "retryIntervalInSeconds": 60,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Silver_FHIR_Transformation",
+        "description": "Transform Bronze FHIR resources into normalized Silver Delta tables by parsing JSON, enforcing schemas, and applying data quality rules.",
+        "dependsOn": [
+          {
+            "activity": "Bronze_injestion",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "d6bc9625-2d3b-ba34-4a13-f697fb1975ff",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 3,
+          "retryIntervalInSeconds": 60,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "silverTables_Testing",
+        "description": "Execute automated validation checks on Silver tables, including schema validation, null checks, duplicate detection, record counts, and referential integrity verification.",
+        "dependsOn": [
+          {
+            "activity": "Silver_FHIR_Transformation",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "729e67da-9128-9d79-4f62-f5c852ece304",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 3,
+          "retryIntervalInSeconds": 60,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "GoldTable_and_Relationship_build",
+        "description": "Build Member360 Gold views and relationship mappings by integrating Silver tables into a unified analytical model for downstream reporting and business intelligence.",
+        "dependsOn": [
+          {
+            "activity": "silverTables_Testing",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

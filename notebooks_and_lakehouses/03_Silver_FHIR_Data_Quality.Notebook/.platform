@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "03_Silver_FHIR_Data_Quality"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d6bc9625-2d3b-ba34-4a13-f697fb1975ff"
+  }
+}

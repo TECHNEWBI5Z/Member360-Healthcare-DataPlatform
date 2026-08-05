@@ -1,0 +1,78 @@
+table fact_allergy
+	lineageTag: c7f530e5-9cea-4a3f-ac71-4154c99f8992
+	sourceLineageTag: [dbo].[fact_allergy]
+
+	column AllergyID
+		dataType: string
+		isHidden
+		lineageTag: 07971827-056d-4f9f-8e5a-3755794c9d93
+		sourceLineageTag: AllergyID
+		summarizeBy: none
+		sourceColumn: AllergyID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientID
+		dataType: string
+		isHidden
+		lineageTag: 7cb00c98-80c8-4a44-ab42-ed1e2e533506
+		sourceLineageTag: PatientID
+		summarizeBy: none
+		sourceColumn: PatientID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Allergy
+		dataType: string
+		lineageTag: 5741b289-5ec5-443f-b16b-7968f1e65703
+		sourceLineageTag: Allergy
+		summarizeBy: none
+		sourceColumn: Allergy
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 543f8294-2353-4465-91f1-b4d5927e3b2e
+		sourceLineageTag: Status
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6b5dd0ca-ee88-4eb5-9060-1159a54be4a3
+		sourceLineageTag: PatientKey
+		summarizeBy: count
+		sourceColumn: PatientKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column allergyKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 82daefd9-9c03-4695-b615-67751f722466
+		sourceLineageTag: allergyKey
+		summarizeBy: count
+		sourceColumn: allergyKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_allergy = entity
+		mode: directLake
+		source
+			entityName: fact_allergy
+			expressionSource: 'DirectLake - HealthcareLakehouse'
+

@@ -1,0 +1,113 @@
+table fact_encounter
+	lineageTag: be15a7e3-58e5-41ee-aa09-269ac3301a55
+	sourceLineageTag: [dbo].[fact_encounter]
+
+	column EncounterID
+		dataType: string
+		isHidden
+		lineageTag: d8b1879c-a067-4748-82d3-c2bf912592c0
+		sourceLineageTag: EncounterID
+		summarizeBy: none
+		sourceColumn: EncounterID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientID
+		dataType: string
+		isHidden
+		lineageTag: 2183ba89-0e81-4f15-b0b2-3647c4a4dc33
+		sourceLineageTag: PatientID
+		summarizeBy: none
+		sourceColumn: PatientID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 6e7d51e8-a0f7-4e16-aa86-1a68678c2db5
+		sourceLineageTag: status
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column EncounterClass
+		dataType: string
+		lineageTag: 76195ec4-08d4-4072-9055-663b35c4d1a2
+		sourceLineageTag: EncounterClass
+		summarizeBy: none
+		sourceColumn: EncounterClass
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartTime
+		dataType: string
+		lineageTag: 250f1f87-1e8e-4c27-9dca-43d3d1b17967
+		sourceLineageTag: StartTime
+		summarizeBy: none
+		sourceColumn: StartTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndTime
+		dataType: string
+		lineageTag: 55a4bc48-773b-4db2-a63f-4efbb62b5a44
+		sourceLineageTag: EndTime
+		summarizeBy: none
+		sourceColumn: EndTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f5f67535-4ae3-464c-8a89-ffdcc9d979df
+		sourceLineageTag: PatientKey
+		summarizeBy: count
+		sourceColumn: PatientKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EncounterDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 6134f25c-bf55-4644-935a-f78819a70617
+		sourceLineageTag: EncounterDateKey
+		summarizeBy: count
+		sourceColumn: EncounterDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 262f76a3-f7a2-4e0d-ab62-df217ec0348a
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column EncounterKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 036c17ce-5640-4507-ab6d-f81205e531f8
+		sourceLineageTag: EncounterKey
+		summarizeBy: count
+		sourceColumn: EncounterKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_encounter = entity
+		mode: directLake
+		source
+			entityName: fact_encounter
+			expressionSource: 'DirectLake - HealthcareLakehouse'
+
