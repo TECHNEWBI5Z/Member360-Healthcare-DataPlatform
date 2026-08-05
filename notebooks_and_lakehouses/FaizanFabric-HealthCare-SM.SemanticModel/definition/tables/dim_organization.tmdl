@@ -1,0 +1,62 @@
+table dim_organization
+	lineageTag: 807d0f7e-3972-4bfd-8a70-ef62ae037d73
+	sourceLineageTag: [dbo].[dim_organization]
+
+	column OrganizationID
+		dataType: string
+		isHidden
+		lineageTag: 658bc69f-440e-494d-adb4-5cc9be3058fe
+		sourceLineageTag: OrganizationID
+		summarizeBy: none
+		sourceColumn: OrganizationID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrganizationName
+		dataType: string
+		lineageTag: e6ddcd86-7653-4215-a6ed-6e7475e53b8b
+		sourceLineageTag: OrganizationName
+		summarizeBy: none
+		sourceColumn: OrganizationName
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: c05c3740-6216-4474-9240-f8d21cf366cc
+		sourceLineageTag: City
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: cef009d4-c9f8-45a0-a64b-a5e969f6aeef
+		sourceLineageTag: State
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column organizationKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b39d5e62-3d32-4cf5-8ff0-70b9f3b579a6
+		sourceLineageTag: organizationKey
+		summarizeBy: count
+		sourceColumn: organizationKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_organization = entity
+		mode: directLake
+		source
+			entityName: dim_organization
+			expressionSource: 'DirectLake - HealthcareLakehouse'
+

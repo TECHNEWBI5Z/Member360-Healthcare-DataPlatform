@@ -1,0 +1,84 @@
+table fact_medication
+	lineageTag: 1489c2f1-8304-40eb-841d-09860401cc12
+	sourceLineageTag: [dbo].[fact_medication]
+
+	column MedicationRequestID
+		dataType: string
+		isHidden
+		lineageTag: e2342e6e-a140-474d-be95-75af1e87fe14
+		sourceLineageTag: MedicationRequestID
+		summarizeBy: none
+		sourceColumn: MedicationRequestID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientID
+		dataType: string
+		isHidden
+		lineageTag: be5441e5-9ef1-4f60-8228-3ae94d5de91b
+		sourceLineageTag: PatientID
+		summarizeBy: none
+		sourceColumn: PatientID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Medication
+		dataType: string
+		lineageTag: 525233dc-37e4-4e00-9d15-a72339c027e1
+		sourceLineageTag: Medication
+		summarizeBy: none
+		sourceColumn: Medication
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 28438a74-bc0c-4ef1-a233-ac1a4db9d3c5
+		sourceLineageTag: status
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column intent
+		dataType: string
+		lineageTag: e973c61d-ca0d-4f14-a6bd-81a80047ef72
+		sourceLineageTag: intent
+		summarizeBy: none
+		sourceColumn: intent
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 8cb9e16e-0770-43d3-87a9-700553ac4409
+		sourceLineageTag: PatientKey
+		summarizeBy: count
+		sourceColumn: PatientKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column medicationKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c71ccd0c-2858-468e-88f4-0c4e7b782880
+		sourceLineageTag: medicationKey
+		summarizeBy: count
+		sourceColumn: medicationKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_medication = entity
+		mode: directLake
+		source
+			entityName: fact_medication
+			expressionSource: 'DirectLake - HealthcareLakehouse'
+

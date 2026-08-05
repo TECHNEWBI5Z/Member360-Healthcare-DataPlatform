@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "FHIR_to_Member360_pl",
+    "description": "End-to-end Microsoft Fabric data pipeline that ingests FHIR resources into the Bronze layer, transforms them into standardized Silver tables, validates the transformed data, and builds Member360 Gold tables along with relationship mappings for analytics and reporting."
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a2ab577c-0688-a8b5-4c89-f65964fdd8c6"
+  }
+}

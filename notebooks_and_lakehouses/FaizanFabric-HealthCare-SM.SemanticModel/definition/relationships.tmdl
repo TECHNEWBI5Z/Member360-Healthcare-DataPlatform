@@ -1,0 +1,24 @@
+relationship ff49bb0a-4c90-dc89-018e-01d9e4013164
+	fromColumn: fact_encounter.PatientID
+	toColumn: dim_patient.PatientID
+
+relationship eb03a342-1ed6-2ad6-8d6b-37065cbec78a
+	fromColumn: fact_observation.PatientID
+	toColumn: dim_patient.PatientID
+
+relationship ca437580-b97f-d560-83c1-54529fb24a8c
+	fromColumn: fact_condition.PatientID
+	toColumn: dim_patient.PatientID
+
+relationship 2a318f0b-0b7d-b70c-f8a9-d5f84355aa5e
+	fromColumn: fact_medication.PatientID
+	toColumn: dim_patient.PatientID
+
+relationship 2521a7ba-452e-d971-a911-63ad930f9c7e
+	fromColumn: fact_allergy.PatientID
+	toColumn: dim_patient.PatientID
+
+relationship c7100c99-3c11-d255-1789-42ba63143a04
+	fromColumn: dim_date.DateKey
+	toColumn: fact_encounter.DateKey
+

@@ -1,0 +1,97 @@
+table fact_observation
+	lineageTag: d9d30808-0c27-4ecc-b90d-eb1906e2c0ad
+	sourceLineageTag: [dbo].[fact_observation]
+
+	column ObservationID
+		dataType: string
+		isHidden
+		lineageTag: 61a90693-fb25-42ca-97a0-977bec34e762
+		sourceLineageTag: ObservationID
+		summarizeBy: none
+		sourceColumn: ObservationID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientID
+		dataType: string
+		isHidden
+		lineageTag: 0ff25cf0-c145-47b9-94f9-e66527a47495
+		sourceLineageTag: PatientID
+		summarizeBy: none
+		sourceColumn: PatientID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOINCCode
+		dataType: string
+		lineageTag: 675aac91-746b-4b3c-bdd7-f4cbbf4461b2
+		sourceLineageTag: LOINCCode
+		summarizeBy: none
+		sourceColumn: LOINCCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ObservationName
+		dataType: string
+		lineageTag: b05a0a3b-e987-4daa-b0c5-5e37005b46fc
+		sourceLineageTag: ObservationName
+		summarizeBy: none
+		sourceColumn: ObservationName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: int64
+		formatString: 0
+		lineageTag: c7df4307-c580-41f7-82cf-583260f43862
+		sourceLineageTag: Value
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit
+		dataType: string
+		lineageTag: 7c84393a-d7f8-40e6-94b4-4bd88e976020
+		sourceLineageTag: Unit
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: eb1271ab-cc70-4e4d-81c6-01e5b896ac9a
+		sourceLineageTag: PatientKey
+		summarizeBy: count
+		sourceColumn: PatientKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column observationKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b68e269f-9f03-4535-916c-e85118028e00
+		sourceLineageTag: observationKey
+		summarizeBy: count
+		sourceColumn: observationKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_observation = entity
+		mode: directLake
+		source
+			entityName: fact_observation
+			expressionSource: 'DirectLake - HealthcareLakehouse'
+
