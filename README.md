@@ -128,14 +128,16 @@ Member360-Healthcare-Data-Platform
 │       └── AllergyIntolerance.ndjson
 │
 ├── scripts
-│   └── generate_fhir_data.py
+│   ├── generate_fhir_data.py
+|   └── upload_to_fabric.py
 │
 ├── notebooks_and_lakehouses
 │   ├── 01_Bronze_FHIR_Ingestion
 │   ├── 02_Silver_FHIR_Transformations
 │   ├── 03_Data_Quality_Framework
 │   ├── 04_Gold_Healthcare_Analytics_Model
-│   └── 05_Member360_SQL_View
+│   ├── FaizanFabric-HealthCare-SM
+|   └── HealthcareLakehouse
 │
 ├── diagrams
 │
